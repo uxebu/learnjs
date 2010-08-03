@@ -101,3 +101,10 @@ body {
 	margin-top: 1em;
 	text-align: right;
 }
+
+.githubFork {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border: 0;
+}
