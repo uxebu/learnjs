@@ -177,7 +177,7 @@ dojo.ready(function(){
 
 			// If search input has a value we make a search is provided we make a search, otherwise list all
 			var search = dojo.byId("search").value;
-			if (search){
+			if (search && search.length > 2){
 				// Reset counter on first search
 				if (!learn.searchReset){
 					learn.config.offset = 1;
@@ -186,6 +186,10 @@ dojo.ready(function(){
 				}
 				var url = "http://query.yahooapis.com/v1/public/yql?q=use%20%22http%3A%2F%2Flearnjs.org%2Fyql%2Fvideosearch.xml%22%20as%20videos%3B%20select%20*%20from%20videos%20where%20search%3D%22"+search+"%22%20limit%20"+learn.config.limit+"%20offset%20"+learn.config.offset+"&format=json&_maxage=3600&_rnd=20100802";
 			}else{
+				// Display alert when search term is only 2 characters long
+				if (search && search.length <= 2){
+					alert("Search phrase needs to be at least three characters long");
+				}
 				// Reset counter on first blank lookup
 				if (learn.searchReset){
 					learn.config.offset = 1;
