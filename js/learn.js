@@ -149,10 +149,6 @@ dojo.ready(function(){
 			var 	tmpl = new dojox.dtl.Template(learn.templates.questions),
 				node = dojo.byId("questions");
 
-			dojo.forEach(questions, function(question){
-				question.text = question.text.replace("#learnjs", "", "g");
-			});
-
 			node.innerHTML = ""; // FIXME?!!!
 			var context = new dojox.dtl.Context({questions: questions});
 			node.appendChild(dojo._toDom(tmpl.render(context)));
