@@ -47,9 +47,36 @@
 						<div class="line">
 							<div class="unit size3of4 firstUnit">
 								<div class="tabContents">
-									<div class="list marginBottom"><div class="line firstLine lastLine marginRight"><div class="unit lastUnit"><div class="mod pane paneContent"><div class="bd alignCenter"><button class="button previous" disabled="disabled" onclick="learn.getAnswers('prev')">Previous</button>&nbsp;&nbsp;Page <span class="pageNo">1</span>&nbsp;&nbsp;<button class="button next" onclick="learn.getAnswers('next')">Next</button></div></div></div></div></div>
+									<div class="list">
+										<div class="line firstLine lastLine marginRight">
+											<div class="unit lastUnit">
+												<div class="mod pane paneContent">
+													<div class="bd alignCenter">
+														<div class="floatLeft">
+															<input type="text" id="search" class="search" /> <button class="button" onclick="learn.getAnswers();">Search</button> <button class="button" onclick="dojo.query('.search').attr('value', ''); learn.getAnswers();">Clear</button>
+														</div>
+														<div class="floatRight">
+															<button class="button previous" disabled="disabled" onclick="learn.getAnswers('prev')">Previous</button>&nbsp;&nbsp;Page <span class="pageNo">1</span>&nbsp;&nbsp;<button class="button next" onclick="learn.getAnswers('next')">Next</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 									<div id="answers"></div>
-									<div class="list marginBottom"><div class="line firstLine lastLine marginRight"><div class="unit lastUnit"><div class="mod pane paneContent"><div class="bd alignCenter"><button class="button previous" disabled="disabled" onclick="learn.getAnswers('prev')">Previous</button>&nbsp;&nbsp;Page <span class="pageNo">1</span>&nbsp;&nbsp;<button class="button next" onclick="learn.getAnswers('next')">Next</button></div></div></div></div></div>
+									<div class="list marginBottom">
+										<div class="line firstLine lastLine marginRight">
+											<div class="unit lastUnit">
+												<div class="mod pane paneContent">
+													<div class="bd alignCenter">
+														<div class="floatRight">
+															<button class="button previous" disabled="disabled" onclick="learn.getAnswers('prev')">Previous</button>&nbsp;&nbsp;Page <span class="pageNo">1</span>&nbsp;&nbsp;<button class="button next" onclick="learn.getAnswers('next')">Next</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 								<div class="tabContents displayNone">
 									<div class="list marginBottom"><div class="line firstLine lastLine marginRight"><div class="unit lastUnit"><div class="mod pane paneContent"><div class="bd">
@@ -85,11 +112,6 @@
 								</div>
 							</div>
 							<div class="unit size1of4 lastUnit tabContents">
-								<!--<div class="mod pane">-->
-								<!--	<div class="bd">-->
-								<!--		<div class="qtbox"></div>-->
-								<!--	</div>-->
-								<!--</div>-->
 								<div class="list">
 									<div id="questions"></div>
 								</div>

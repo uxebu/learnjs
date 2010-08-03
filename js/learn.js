@@ -114,6 +114,13 @@ dojo.ready(function(){
 				}
 			});
 
+			// Connect to search box to auto search on enter
+			dojo.query(".search").connect("onkeydown", function(e){
+				if (e.keyCode == dojo.keys.ENTER){
+					learn.getAnswers();
+				}
+			});
+
 			learn.getQuestions();
 			learn.getAnswers();
 		},
@@ -153,7 +160,7 @@ dojo.ready(function(){
 			var context = new dojox.dtl.Context({questions: questions});
 			node.appendChild(dojo._toDom(tmpl.render(context)));
 		},
-		getAnswers: function(type){
+		getAnswers: function(type, search){
 			// summary:
 			//		Gets new answers from yql table.
 
@@ -168,9 +175,29 @@ dojo.ready(function(){
 					break;
 			}
 
+			// If search input has a value we make a search is provided we make a search, otherwise list all
+			var search = dojo.byId("search").value;
+			if (search){
+				// Reset counter on first search
+				if (!learn.searchReset){
+					learn.config.offset = 1;
+					learn.config.limit = 5;
+					learn.searchReset = true;
+				}
+				var url = "http://query.yahooapis.com/v1/public/yql?q=use%20%22http%3A%2F%2Flearnjs.org%2Fyql%2Fvideosearch.xml%22%20as%20videos%3B%20select%20*%20from%20videos%20where%20search%3D%22"+search+"%22%20limit%20"+learn.config.limit+"%20offset%20"+learn.config.offset+"&format=json&_maxage=3600&_rnd=20100802";
+			}else{
+				// Reset counter on first blank lookup
+				if (learn.searchReset){
+					learn.config.offset = 1;
+					learn.config.limit = 5;
+				}
+				learn.searchReset = false;
+				var url = "http://query.yahooapis.com/v1/public/yql?q=use%20%22http%3A%2F%2Flearnjs.org%2Fyql%2Fvideos.xml%22%20as%20videos%3B%20select%20*%20from%20videos%20limit%20"+learn.config.limit+"%20offset%20"+learn.config.offset+"&format=json&_maxage=3600&_rnd=20100803";
+			}
+
 			dojo.byId("answers").innerHTML = learn.templates.loaderMargin;
 			dojo.io.script.get({
-				url: "http://query.yahooapis.com/v1/public/yql?q=use%20%22http%3A%2F%2Flearnjs.org%2Fyql%2Fvideos.xml%3F1es%22%20as%20videos%3B%20select%20*%20from%20videos%20limit%20"+learn.config.limit+"%20offset%20"+learn.config.offset+"&format=json&_maxage=3600&_rnd=20100803",
+				url: url,
 				jsonp: "callback",
 				load: function(data){
 					// YQL has a weird bug where it resurns an object when resultset is one.
