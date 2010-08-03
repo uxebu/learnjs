@@ -38,7 +38,7 @@
 							<li class="tab"><a href="javascript://">Contribute</a></li>
 						</ul>
 						<ul div class="unit size1of4 lastUnit">
-							<li class="active"><a href="javascript://">Question stream</a></li>
+							<li class="active"><a href="javascript://">Question/Twitter stream</a></li>
 						</ul>
 					</div>
 				</div>
@@ -113,7 +113,31 @@
 							</div>
 							<div class="unit size1of4 lastUnit tabContents">
 								<div class="list">
-									<div id="questions"></div>
+									<div class="line firstLine lastLine">
+										<div class="unit lastUnit">
+											<div class="mod pane paneContent">
+												<div class="bd alignCenter">
+													<div class="floatLeft">
+														<button class="button" onclick="learn.getQuestions();">Reload</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="questions"></div>
+								<div class="list">
+									<div class="line firstLine lastLine">
+										<div class="unit lastUnit">
+											<div class="mod pane paneContent">
+												<div class="bd alignCenter">
+													<div class="floatLeft">
+														<button class="button" onclick="learn.getQuestions();">Reload</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
