@@ -15,7 +15,7 @@
 			</inputs>
 			<execute>
 			<![CDATA[
-			var videos = y.query('use "http://www.datatables.org/vimeo/vimeo.video.xml" as vimeo.video; use "http://www.datatables.org/vimeo/vimeo.groups.videos.xml" as vimeo.groups.videos; use "http://learnjs.org/yql/twitter.xml" as twitter; use "http://learnjs.org/yql/oembed.xml" as oembed; select * from oembed where maxwidth="'+maxwidth+'" AND (video.title LIKE "%'+search+'%" OR video.tags LIKE "%'+search+'%" OR video.user_name LIKE "%'+search+'%") AND url IN (select video.url from vimeo.video where video_id in (select video.id from vimeo.groups.videos where groupname='57346') OR video_id IN (select result.vimeo_id from twitter where q="learnjs vimeo")) | sort(field="video.upload_date", descending="true") | unique(field="video.url")').results;
+			var videos = y.query('use "http://www.datatables.org/vimeo/vimeo.video.xml" as vimeo.video; use "http://www.datatables.org/vimeo/vimeo.groups.videos.xml" as vimeo.groups.videos; use "http://learnjs.org/yql/twitter.xml" as twitter; use "http://learnjs.org/yql/oembed.xml" as oembed; select * from oembed where maxwidth="'+maxwidth+'" AND (video.title LIKE "%'+search+'%" OR video.tags LIKE "%'+search+'%" OR video.user_name LIKE "%'+search+'%") AND url IN (select video.url from vimeo.video where video_id in (select video.id from vimeo.groups.videos where groupname=\'57346\') OR video_id IN (select result.vimeo_id from twitter where q="learnjs vimeo")) | sort(field="video.upload_date", descending="true") | unique(field="video.url")').results;
 			var json = y.xmlToJson(videos);
 
 			response.maxAge=300;
