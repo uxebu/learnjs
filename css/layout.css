@@ -1,0 +1,99 @@
+body {
+	background-image:url("../img/bgschool.jpg");
+	background-repeat: no-repeat;
+
+}
+.gs960,
+.nav .gs960 {
+	width: 960px;
+}
+
+.list {
+	position: relative;
+	overflow: visible;
+}
+
+.nav .right {
+	left: 960px;
+}
+
+.menu {
+	width: 900px;
+}
+
+.nav .logo {
+	height:36px;
+	padding-left:10px;
+	padding-top:15px;
+	text-align:left;
+	width:799px;
+}
+
+.nav .about {
+	float:right;
+}
+
+.pageBuild .pageInfo {
+	background:url("../img/iconHome.png") no-repeat scroll center top transparent;
+}
+
+.pageHome .pageInfo {
+	background:url("../img/iconHome.png") no-repeat scroll center top transparent;
+}
+
+#questions .active .bd {
+	background: #ddd;
+}
+
+#questions .active .bd .buttonAnswers {
+	background: #fff;
+}
+
+.bd img {
+	margin: 0 .5em .5em 0;
+	vertical-align: middle;
+}
+
+.qtbox,
+.atbox {
+	height: 140px;
+}
+
+/* Buttons, form elements */
+.button,
+.buttonAnswers,
+.buttonReload {
+	background: #eee;
+	border: none;
+	padding: .5em;
+
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
+
+/* Tags */
+.question,
+.answer {
+	font-size: 1.7em;
+	margin-bottom: .5em;
+}
+
+.emphasize {
+	font-size: 1.5em;
+	margin: 0;
+}
+
+.marginBottomHead {
+	margin-bottom: 20px;
+}
+
+.answer {
+	margin-bottom: .5em;
+}
+
+.ccNotice {
+	font-size: .8em;
+	margin-top: 1em;
+	text-align: right;
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd">
+	<meta>
+		<author>Nikolai Onken</author>
+		<description>LearnJs data table</description>
+		<sampleQuery><![CDATA[
+		select * from {table}]]></sampleQuery>
+		<documentationURL></documentationURL>
+	</meta>
+	<bindings>
+		<select itemPath="results.videos" produces="XML">
+			<inputs>
+				<key id="maxwidth" type="xs:string" required="false" paramType="variable"/>
+			</inputs>
+			<execute>
+			<![CDATA[
+			var videos = y.query('use "http://www.datatables.org/vimeo/vimeo.video.xml" as vimeo.video; use "http://www.datatables.org/vimeo/vimeo.groups.videos.xml" as vimeo.groups.videos; use "http://learnjs.org/yql/twitter.xml" as twitter; use "http://learnjs.org/yql/oembed.xml" as oembed; select * from oembed where maxwidth="'+maxwidth+'" AND url IN (select video.url from vimeo.video where video_id in (select video.id from vimeo.groups.videos where groupname=\'57346\') OR video_id IN (select result.vimeo_id from twitter where q="learnjs vimeo")) | sort(field="video.upload_date", descending="true") | unique(field="video.url")').results;
+			var json = y.xmlToJson(videos);
+
+			response.maxAge=300;
+			response.object = videos;
+			]]>
+			</execute>
+		</select>
+	</bindings>
+</table>

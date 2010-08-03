@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>learnjs</title>
+		<!-- TODO: Need to concatenate CSS -->
+		<style type="text/css">
+				@import "http://ajax.googleapis.com/ajax/libs/dojo/1.4.1/dojo/resources/dojo.css";
+				@import "http://ajax.googleapis.com/ajax/libs/dojo/1.4.1/dijit/themes/tundra/tundra.css";
+		</style>
+		<link rel="stylesheet" type="text/css" href="http://uxebu.com/dojango/dojo-media/1.4.1/css/nebula.css" />
+		<link rel="stylesheet" type="text/css" href="css/layout.css" />
+	</head>
+	<body class="tundra pageHome">
+		<div class="body">
+			<div class="nav">
+				<div class="gs960 container">
+					<div class="left">&nbsp;</div>
+					<div class="center">
+						<div class="floatLeft">
+							<ul class="menu">
+								<li class="logo"><img src="img/logo.png"></li>
+								<li class="about"><a href="#">About</a></li>
+							</ul>
+							<div class="menuExtend"></div>
+							<div class="menuBarRight"></div>
+						</div>
+					</div>
+					<div class="right"></div>
+				</div>
+			</div>
+			<div class="gs960 page">
+				<div class="header">
+					<div class="pageInfo"></div>
+					<div class="line">
+						<ul div class="unit size3of4 firstUnit tabs">
+							<li class="active tab"><a href="javascript://">JavaScript wisdom</a></li>
+							<li class="tab"><a href="javascript://">Contribute</a></li>
+						</ul>
+						<ul div class="unit size1of4 lastUnit">
+							<li class="active"><a href="javascript://">Question stream</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="main">
+					<div class="list">
+						<div class="line">
+							<div class="unit size3of4 firstUnit">
+								<div class="tabContents">
+									<div class="list marginBottom"><div class="line firstLine lastLine marginRight"><div class="unit lastUnit"><div class="mod pane paneContent"><div class="bd alignCenter"><button class="button previous" disabled="disabled" onclick="learn.getAnswers('prev')">Previous</button>&nbsp;&nbsp;Page <span class="pageNo">1</span>&nbsp;&nbsp;<button class="button next" onclick="learn.getAnswers('next')">Next</button></div></div></div></div></div>
+									<div id="answers"></div>
+									<div class="list marginBottom"><div class="line firstLine lastLine marginRight"><div class="unit lastUnit"><div class="mod pane paneContent"><div class="bd alignCenter"><button class="button previous" disabled="disabled" onclick="learn.getAnswers('prev')">Previous</button>&nbsp;&nbsp;Page <span class="pageNo">1</span>&nbsp;&nbsp;<button class="button next" onclick="learn.getAnswers('next')">Next</button></div></div></div></div></div>
+								</div>
+								<div class="tabContents displayNone">
+									<div class="list marginBottom"><div class="line firstLine lastLine marginRight"><div class="unit lastUnit"><div class="mod pane paneContent"><div class="bd">
+										<h2 class="marginBottom">The rules</h2>
+										<p>Contributing JavaScript videos to learnjs.org is super simple and open to anyone. There are a few rules though to keep it interesting:</p>
+										<ul>
+											<li>Max. 1 minute</li>
+											<li>Max. 5 lines of code</li>
+											<li>No talking (so you can keep the music on while watching)</li>
+										</ul>
+										<p>To get your video listed on learnjs.org, simple do following:</p>
+										<ul>
+											<li>Create a video only showing the command line</li>
+											<li>Upload the video to http://vimeo.com and add proper tags such as learnjs, javascript and tags describing the content of the video.</li>
+											<li>If you have not joined the <a href="http://vimeo.com/groups/57346">learnjs group</a> before, <a href="http://vimeo.com/groups/57346">join the group</a>.</li>
+											<li>Add the video to the learnjs vimeo group by clicking on the "add" tab next to your video and selecting "Add to Groups".</li>
+											<li>Done (A video explaining this will come soon, promised!).</li>
+										</ul>
+										<p>Enjoy hacking the console - Oh and once you created a video, don't forget to tweet about it :)</p>
+									</div></div></div></div></div>
+								</div>
+							</div>
+							<div class="unit size1of4 lastUnit tabContents">
+								<!--<div class="mod pane">-->
+								<!--	<div class="bd">-->
+								<!--		<div class="qtbox"></div>-->
+								<!--	</div>-->
+								<!--</div>-->
+								<div class="list">
+									<div id="questions"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer">&copy; uxebu Consulting Ltd. &amp; Co. KG | <a href="http://uxebu.com/contact">Contact</a> | <a href="http://uxebu.com/legal">Legal</a></div>
+			</div>
+		</div>
+		<!-- FIXME: We need to create a build of js/css -->
+		<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.5/dojo/dojo.xd.js" type="text/javascript"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.5/dojo/behavior.js" type="text/javascript"></script>
+
+		<script src="http://uxebu.com/dojango/dojo-media/1.4.1/uxebu/nav.js"></script>
+		<script src="http://uxebu.com/dojango/dojo-media/1.4.1/uxebu/widget/popup.js" type="text/javascript"></script>
+
+		<script src="js/learn.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-4832590-5']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</body>
+</html>

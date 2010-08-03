@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd">
+	<meta>
+		<author>Nikolai Onken</author>
+		<description>Oembed data table</description>
+		<sampleQuery><![CDATA[
+		select * from {table} where
+		type='vimeo' and item="http://vimeo.com/8915705"]]></sampleQuery>
+		<documentationURL></documentationURL>
+	</meta>
+	<bindings>
+		<select itemPath="" produces="XML">
+			<urls>
+				<url>{url}</url>
+			</urls>
+			<inputs>
+				<key id="url" type="xs:string" required="true" paramType="variable"/>
+				<key id="maxwidth" type="xs:string" required="false" paramType="variable"/>
+			</inputs>
+			<execute>
+			<![CDATA[
+			var data;
+			if (url.indexOf("vimeo") > -1){
+				// Lets get the id first
+				var vimeoUrl = (new RegExp(/http:\/\/(www\.)?vimeo.com\/(\d+)/)).exec(url);
+				if (!!vimeoUrl && vimeoUrl[2]){
+					var id = vimeoUrl[2];
+					var videoInfo = y.query("select * from vimeo.video where video_id='"+id+"'").results;
+					var json = y.xmlToJson(videoInfo);
+
+					// Now get oembed info
+					var data = y.rest("http://vimeo.com/api/oembed.xml").query("url", json.results.videos.video.url).query("maxwidth", maxwidth).contentType('application/json').get().response;
+					var json = y.xmlToJson(data);
+
+					// Mixin html
+					videoInfo = y.xmlToJson(videoInfo);
+					videoInfo.results.videos.video.html = json.oembed.html;
+
+					var result = videoInfo.results;
+				}
+			}else if (url.indexOf("youtube") > -1){
+				// Lets get the youtube id
+				var youtubeUrl = (new RegExp(/http:\/\/(www\.)?youtube.com\/watch\?v=(\S+)/)).exec(url);
+				if (!!youtubeUrl && youtubeUrl[2]){
+					var id = youtubeUrl[2];
+					var videoInfo = y.query("select * from youtube.video where id='"+id+"'").results;
+					var json = y.xmlToJson(videoInfo);
+
+					// Now getting oembed info
+					var data = y.rest("http://www.youtube.com/oembed").query("url", json.results.video.url).query("format", "xml").contentType('application/json').get().response;
+					var json = y.xmlToJson(data);
+
+					// Mixin html
+					videoInfo = y.xmlToJson(videoInfo);
+
+					var result = {
+						videos: {
+							video: videoInfo.results.video
+						}
+					}
+					result.videos.video.html = json.oembed.html;
+				}
+			}
+			response.maxAge = 300;
+			response.object = result;
+			]]>
+			</execute>
+		</select>
+	</bindings>
+</table>
