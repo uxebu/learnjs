@@ -23,7 +23,7 @@ uxebu.dtl.filter = {
 		// summary:
 		//		Simple filter for twitter style display of timestamp
 
-		var	postDate = dojo.date.locale.parse(value, {datePattern: 'y-M-d H:m:s', selector: 'date'}),
+		var	postDate = dojo.date.locale.parse(value, {datePattern: 'y-M-d H:m:s', selector: 'date'}) || new Date(value),
 			today = new Date(),
 			yesterday = dojo.date.add(today, "day", -1),
 			postStr;
