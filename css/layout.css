@@ -3,6 +3,9 @@ body {
 	background-repeat: no-repeat;
 
 }
+.body {
+	display: block;
+}
 .gs960,
 .nav .gs960 {
 	width: 960px;
