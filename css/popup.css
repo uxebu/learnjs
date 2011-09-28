@@ -1,0 +1,31 @@
+.uxebuPopup {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.uxebuPopup-closeNode {
+	background:url(../img/popup-close.png);
+	cursor:pointer;
+	height:25px;
+	position:absolute;
+	right:-5px;
+	top:-14px;
+	width:25px;
+}
+.uxebuPopup-closeNode span {
+	display: none;
+}
+
+#uxebuPopupUnderlay {
+	position:absolute;
+}
+
+/* underlay */
+#uxebuPopupUnderlay .dijitDialogUnderlay {
+	background: url(../img/underlay-bg.gif);
+	opacity: 1;
+}
+
+.displayNone {
+	display:none;
+}

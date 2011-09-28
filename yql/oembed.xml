@@ -25,7 +25,7 @@
 				var vimeoUrl = (new RegExp(/http:\/\/(www\.)?vimeo.com\/(\d+)/)).exec(url);
 				if (!!vimeoUrl && vimeoUrl[2]){
 					var id = vimeoUrl[2];
-					var videoInfo = y.query("select * from vimeo.video where video_id='"+id+"'").results;
+					var videoInfo = y.query("use 'http://www.datatables.org/vimeo/vimeo.video.xml' as vimeo.video; select * from vimeo.video where video_id='"+id+"'").results;
 					var json = y.xmlToJson(videoInfo);
 
 					// Now get oembed info
